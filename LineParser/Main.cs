@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace QuoteChatLineParser
@@ -12,7 +13,7 @@ namespace QuoteChatLineParser
 
         private void uploadButton_Click(object sender, EventArgs eventArgs)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            var openFileDialog = new OpenFileDialog
             {
                 CheckFileExists = true,
                 AddExtension = true,
@@ -21,11 +22,17 @@ namespace QuoteChatLineParser
             };
 
             var dialogResponse = openFileDialog.ShowDialog();
-
+            
             if (dialogResponse == DialogResult.OK)
             {
-                // TODO: Read contents from file.
-                // TODO: Do something with contents from file.
+                // Read contents from file.
+                var fileReader = new FileReader(openFileDialog.FileName);
+                var quoteReader = new QuoteReader(fileReader);
+
+                // Display the contents of the file
+                resultsTextBox.Text = string.Join(
+                    Environment.NewLine + Environment.NewLine,
+                    quoteReader.GetAllQuotes());
             }
         }
     }
