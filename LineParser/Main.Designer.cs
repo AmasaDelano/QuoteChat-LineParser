@@ -29,48 +29,63 @@
         private void InitializeComponent()
         {
             this.uploadButton = new System.Windows.Forms.Button();
-            this.resultsTextBox = new System.Windows.Forms.TextBox();
+            this.quoteButtonPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.vlcControl = new Vlc.DotNet.Forms.VlcControl();
             this.SuspendLayout();
             // 
             // uploadButton
             // 
-            this.uploadButton.Location = new System.Drawing.Point(83, 12);
+            this.uploadButton.Location = new System.Drawing.Point(66, 10);
+            this.uploadButton.Margin = new System.Windows.Forms.Padding(2);
             this.uploadButton.Name = "uploadButton";
-            this.uploadButton.Size = new System.Drawing.Size(103, 39);
+            this.uploadButton.Size = new System.Drawing.Size(82, 32);
             this.uploadButton.TabIndex = 0;
             this.uploadButton.Text = "Upload File";
             this.uploadButton.UseVisualStyleBackColor = true;
             this.uploadButton.Click += new System.EventHandler(this.uploadButton_Click);
             // 
-            // resultsTextBox
+            // quoteButtonPanel
             // 
-            this.resultsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.resultsTextBox.Location = new System.Drawing.Point(13, 64);
-            this.resultsTextBox.Multiline = true;
-            this.resultsTextBox.Name = "resultsTextBox";
-            this.resultsTextBox.ReadOnly = true;
-            this.resultsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.resultsTextBox.Size = new System.Drawing.Size(255, 472);
-            this.resultsTextBox.TabIndex = 1;
+            this.quoteButtonPanel.AutoScroll = true;
+            this.quoteButtonPanel.ColumnCount = 1;
+            this.quoteButtonPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.quoteButtonPanel.Location = new System.Drawing.Point(7, 47);
+            this.quoteButtonPanel.Name = "quoteButtonPanel";
+            this.quoteButtonPanel.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.quoteButtonPanel.RowCount = 1;
+            this.quoteButtonPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.quoteButtonPanel.Size = new System.Drawing.Size(220, 386);
+            this.quoteButtonPanel.TabIndex = 3;
+            // 
+            // vlcControl
+            // 
+            this.vlcControl.Location = new System.Drawing.Point(233, 12);
+            this.vlcControl.Name = "vlcControl";
+            this.vlcControl.Rate = 0F;
+            this.vlcControl.Size = new System.Drawing.Size(472, 421);
+            this.vlcControl.TabIndex = 4;
+            this.vlcControl.Text = "vlcControl";
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 548);
-            this.Controls.Add(this.resultsTextBox);
+            this.ClientSize = new System.Drawing.Size(717, 445);
+            this.Controls.Add(this.vlcControl);
+            this.Controls.Add(this.quoteButtonPanel);
             this.Controls.Add(this.uploadButton);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
             this.Text = "Quote Chat";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button uploadButton;
-        private System.Windows.Forms.TextBox resultsTextBox;
+        private System.Windows.Forms.TableLayoutPanel quoteButtonPanel;
+        private Vlc.DotNet.Forms.VlcControl vlcControl;
     }
 }
 

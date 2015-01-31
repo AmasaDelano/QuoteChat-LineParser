@@ -3,7 +3,7 @@ using System.IO;
 
 namespace QuoteChatLineParser
 {
-    public class FileReader
+    public sealed class FileReader
     {
         private readonly string _fileName;
 

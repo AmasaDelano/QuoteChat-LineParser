@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace QuoteChatLineParser
@@ -22,18 +21,31 @@ namespace QuoteChatLineParser
             };
 
             var dialogResponse = openFileDialog.ShowDialog();
-            
+
             if (dialogResponse == DialogResult.OK)
             {
-                // Read contents from file.
+                // Get the quotes
                 var fileReader = new FileReader(openFileDialog.FileName);
                 var quoteReader = new QuoteReader(fileReader);
+                var quotes = quoteReader.GetAllQuotes();
 
-                // Display the contents of the file
-                resultsTextBox.Text = string.Join(
-                    Environment.NewLine + Environment.NewLine,
-                    quoteReader.GetAllQuotes());
+                // Get the corresponding movie file
+                string moviePath = openFileDialog.FileName.Replace(".srt", ".mp4");
+                var moviePlayer = new MoviePlayer(moviePath, vlcControl);
+
+                // Generate a button for each quote. Clicking on the button will play the quote.
+                foreach (var quote in quotes)
+                {
+                    BuildQuoteButton(quote, moviePlayer);
+                }
             }
+        }
+
+        private void BuildQuoteButton(Quote quote, MoviePlayer moviePlayer)
+        {
+            var quoteButton = new QuotePanel(new[] { quote.GetData() }, moviePlayer);
+
+            quoteButtonPanel.Controls.Add(quoteButton);
         }
     }
 }
